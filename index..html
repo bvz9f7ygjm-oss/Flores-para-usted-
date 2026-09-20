@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para usted 💛</title>
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    font-family: Georgia, serif;
+    background:radial-gradient(circle at 50% 35%, #fff9cf 0%, #ffe98a 35%, #f6c928 72%, #d99d00 100%);
+    color:#5b4300;
+  }
+  .card{
+    position:relative; width:min(92vw,520px); min-height:620px;
+    padding:45px 25px 35px; text-align:center; overflow:hidden;
+    border-radius:30px;
+    background:rgba(255,255,255,.26);
+    backdrop-filter:blur(7px);
+    border:1px solid rgba(255,255,255,.65);
+    box-shadow:0 20px 60px rgba(91,67,0,.25);
+  }
+  h1{font-size:clamp(2.2rem,9vw,4rem); margin:10px 0 8px; color:#6a4a00}
+  p{font-size:1.25rem; line-height:1.5; margin:8px auto; max-width:390px}
+  .bouquet{position:relative;height:285px;margin:5px auto 5px; width:330px}
+  .stem{position:absolute; width:5px; height:190px; background:#4f8b35; bottom:20px; left:50%; transform-origin:bottom; border-radius:5px}
+  .s1{transform:rotate(-28deg)} .s2{transform:rotate(-10deg)} .s3{transform:rotate(12deg)} .s4{transform:rotate(30deg)}
+  .leaf{position:absolute;width:55px;height:25px;background:#5d9d3e;border-radius:100% 0 100% 0}
+  .l1{left:58px;bottom:78px;transform:rotate(-28deg)} .l2{right:55px;bottom:92px;transform:scaleX(-1) rotate(-20deg)}
+  .flower{position:absolute;width:108px;height:108px;border-radius:50%;left:50%;top:65px;transform:translateX(-50%)}
+  .f2{left:31%;top:96px;transform:translateX(-50%) scale(.8)} .f3{left:69%;top:96px;transform:translateX(-50%) scale(.82)}
+  .petal{position:absolute;width:44px;height:62px;background:#ffd83d;border-radius:50%;left:32px;top:23px;transform-origin:22px 31px}
+  .petal:nth-child(1){transform:rotate(0deg) translateY(-28px)}
+  .petal:nth-child(2){transform:rotate(45deg) translateY(-28px)}
+  .petal:nth-child(3){transform:rotate(90deg) translateY(-28px)}
+  .petal:nth-child(4){transform:rotate(135deg) translateY(-28px)}
+  .petal:nth-child(5){transform:rotate(180deg) translateY(-28px)}
+  .petal:nth-child(6){transform:rotate(225deg) translateY(-28px)}
+  .petal:nth-child(7){transform:rotate(270deg) translateY(-28px)}
+  .petal:nth-child(8){transform:rotate(315deg) translateY(-28px)}
+  .center{position:absolute;width:43px;height:43px;border-radius:50%;background:#6b4300;left:32px;top:33px;z-index:2;box-shadow:inset 0 0 0 5px #8b5b00}
+  .heart{font-size:2.2rem;animation:pulse 1.3s infinite;display:inline-block}
+  button{
+    border:0;border-radius:999px;padding:13px 23px;font-size:1rem;
+    background:#6a4a00;color:white;cursor:pointer;box-shadow:0 8px 20px rgba(70,45,0,.25)
+  }
+  .petal-fall{position:absolute;top:-30px;font-size:24px;animation:fall linear forwards;pointer-events:none}
+  @keyframes pulse{50%{transform:scale(1.18)}}
+  @keyframes fall{to{transform:translateY(760px) rotate(360deg);opacity:0}}
+  @media(max-height:700px){.card{min-height:90vh;padding-top:20px}.bouquet{height:220px}.flower{top:35px}.f2,.f3{top:65px}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="heart">💛</div>
+  <h1>Te amo mucho</h1>
+  <div class="bouquet" aria-label="Ramo de flores amarillas">
+    <div class="stem s1"></div><div class="stem s2"></div><div class="stem s3"></div><div class="stem s4"></div>
+    <div class="leaf l1"></div><div class="leaf l2"></div>
+    <div class="flower f2"><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="center"></span></div>
+    <div class="flower"><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="center"></span></div>
+    <div class="flower f3"><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="center"></span></div>
+  </div>
+  <p>Estas flores son para recordarle lo mucho que la quiero. 💛🌻</p>
+  <button onclick="celebrate()">Tocar aquí 💛</button>
+</div>
+<script>
+function celebrate(){
+  for(let i=0;i<28;i++){
+    const x=document.createElement('div');
+    x.className='petal-fall';
+    x.textContent=['🌻','💛','🌼'][Math.floor(Math.random()*3)];
+    x.style.left=Math.random()*100+'vw';
+    x.style.animationDuration=(2.5+Math.random()*3)+'s';
+    x.style.fontSize=(16+Math.random()*18)+'px';
+    document.body.appendChild(x);
+    setTimeout(()=>x.remove(),6000);
+  }
+}
+setTimeout(celebrate,700);
+</script>
+</body>
+</html>
